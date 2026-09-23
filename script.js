@@ -1,0 +1,141 @@
+/* --------------------------------------------------
+   PROJECT HOVER IMAGES & MASCOT SPIN
+-------------------------------------------------- */
+
+const projects = document.querySelectorAll(".project");
+const preview = document.querySelector(".project-preview");
+const previewImage1 = document.querySelector("#preview-image-1");
+const previewImage2 = document.querySelector("#preview-image-2");
+const mascot = document.querySelector(".mascot img");
+
+/* Helper function to get a random pixel offset between min and max */
+function getRandomOffset(min, max) {
+    const val = Math.random() * (max - min) + min;
+    // Randomly pick positive or negative direction
+    return Math.random() < 0.5 ? val : -val; 
+}
+
+/* --------------------------------------------------
+   PROJECT HOVERS
+-------------------------------------------------- */
+
+projects.forEach((project) => {
+
+    project.addEventListener("mouseenter", () => {
+        // 1. Load project preview images
+        const img1 = project.dataset.img1;
+        const img2 = project.dataset.img2;
+
+        if (img1 && img2 && preview) {
+            previewImage1.src = img1;
+            previewImage2.src = img2;
+
+            // Generate slight random offset for image overlap
+            const x1 = getRandomOffset(10, 35);
+            const y1 = getRandomOffset(10, 35);
+            const x2 = getRandomOffset(10, 35);
+            const y2 = getRandomOffset(10, 35);
+
+            preview.style.setProperty("--x1", `${x1}px`);
+            preview.style.setProperty("--y1", `${y1}px`);
+            preview.style.setProperty("--x2", `${x2}px`);
+            preview.style.setProperty("--y2", `${y2}px`);
+
+            preview.classList.add("visible");
+        }
+
+        // 2. Trigger Y-Axis Spin on Mascot (if data-spin2 attribute exists)
+        if (mascot && mascot.dataset.spin2) {
+            mascot.src = mascot.dataset.spin2;
+        }
+    });
+
+    project.addEventListener("mouseleave", () => {
+        // 1. Hide preview images
+        if (preview) {
+            preview.classList.remove("visible");
+        }
+
+        // 2. Reset mascot back to static image
+        if (mascot && mascot.dataset.static) {
+            mascot.src = mascot.dataset.static;
+        }
+    });
+
+});
+
+
+/* --------------------------------------------------
+   DIRECT MASCOT HOVER & CLICK REDIRECT
+-------------------------------------------------- */
+
+if (mascot) {
+    const staticImage = mascot.dataset.static;
+    const defaultGif = mascot.dataset.gif;
+
+    mascot.addEventListener("mouseenter", () => {
+        if (defaultGif) {
+            mascot.src = defaultGif;
+        }
+    });
+
+    mascot.addEventListener("mouseleave", () => {
+        if (staticImage) {
+            mascot.src = staticImage;
+        }
+    });
+
+/* Mascot Click Handler: Redirects to Homepage if on a Project Page */
+mascot.addEventListener("click", () => {
+    if (document.querySelector(".project-page")) {
+        window.location.href = "/"; // Pushes back to the root domain / homepage
+    }
+});
+}
+
+/* --------------------------------------------------
+   PROJECT PAGE: MASCOT SPIN ON ACTIVE SCROLL
+-------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const projectPage = document.querySelector('.project-page');
+    if (!projectPage) return;
+
+    const mascotImg = document.querySelector('.mascot img');
+    if (!mascotImg) return;
+
+    const staticSrc = mascotImg.getAttribute('data-static');
+    const spinDownSrc = mascotImg.getAttribute('data-spin-down');
+    const spinUpSrc = mascotImg.getAttribute('data-spin-up');
+
+    let lastScrollY = window.scrollY;
+    let scrollTimeout = null;
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // Determine scroll direction
+        if (currentScrollY > lastScrollY) {
+            // SCROLLING DOWN -> spikey0.gif
+            if (mascotImg.src !== spinDownSrc) {
+                mascotImg.src = spinDownSrc;
+            }
+        } else if (currentScrollY < lastScrollY) {
+            // SCROLLING UP -> spikey2.gif
+            if (mascotImg.src !== spinUpSrc) {
+                mascotImg.src = spinUpSrc;
+            }
+        }
+
+        lastScrollY = currentScrollY;
+
+        // Clear existing timer while actively scrolling
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+
+        // STOP SCROLLING DETECTOR: Reset to static image after 150ms of no scrolling
+        scrollTimeout = setTimeout(() => {
+            mascotImg.src = staticSrc;
+        }, 150);
+    });
+});

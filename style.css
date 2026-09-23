@@ -1,0 +1,654 @@
+/* --------------------------------------------------
+   CUSTOM & GOOGLE FONTS
+-------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+/* --------------------------------------------------
+   PROJECT TITLE (ROCK SALT + CONTINUOUS BOIL)
+-------------------------------------------------- */
+.project-title-bold {
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    display: inline-block;
+    
+    /* Continuous 3-step hand-drawn boil animation */
+    animation: squigglevision 0.35s steps(1) infinite;
+}
+/* --------------------------------------------------
+   CUSTOM FONT SETUP
+-------------------------------------------------- */
+
+@font-face {
+    font-family: 'AppleGaramond';
+    src: url('assets/AppleGaramond-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tagesschrift';
+    src: url('../assets/Tagesschrift-Regular.ttf') format('truetype'),
+         url('assets/Tagesschrift-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* --------------------------------------------------
+   BASIC RESET & BODY
+-------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'AppleGaramond', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.35;
+    background: #ffffff;
+    color: #000000;
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* --------------------------------------------------
+   BOTTOM GRADIENT FADE
+-------------------------------------------------- */
+
+.bottom-fade {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 15;
+}
+
+
+/* --------------------------------------------------
+   LINKS
+-------------------------------------------------- */
+
+a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+a:hover, a:active {
+    color: black;
+    background-color: rgba(234, 178, 221, 0.458);
+}
+
+.logo-link:hover,
+.logo-link:active {
+    background-color: transparent;
+}
+
+::selection {
+    color: rgb(234, 178, 221);
+    background: black;
+}
+
+
+/* --------------------------------------------------
+   MAIN LAYOUT (HOMEPAGE)
+-------------------------------------------------- */
+
+.site {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+
+/* --------------------------------------------------
+   INTRO (LEFT SIDEBAR) & STICKY LOGO
+-------------------------------------------------- */
+
+.intro {
+    width: 370px;
+    max-width: 100%;
+}
+
+.logo-link {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding-top: 20px; /* Maintains top spacing when sticky */
+    margin-bottom: 25px;
+    /* White gradient fading down to transparent so text disappears behind it as you scroll */
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 1) 75%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+.logo {
+    display: block;
+    width: 370px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* Reduced since bottom padding of logo-link adds spacing */
+}
+
+
+/* --------------------------------------------------
+   HOMEPAGE PROJECTS LIST
+-------------------------------------------------- */
+
+.projects {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 48vw;
+    max-width: 700px;
+}
+
+.projects-label {
+    margin-bottom: 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding: 3px 0;
+    border-bottom: 1px solid transparent;
+}
+
+.project:hover {
+    text-decoration: none;
+}
+
+.project:hover .project-title {
+    text-decoration: underline;
+}
+
+.project-date {
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   PROJECT IMAGE PREVIEW
+-------------------------------------------------- */
+
+/* Base styling: Locked at 40vw / 650px max for all laptops (including 13" MacBooks) */
+.project-preview {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 40vw;
+    max-width: 650px;
+    aspect-ratio: 4 / 3;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 5;
+    transition: opacity 0.15s ease;
+}
+
+/* ONLY applies to large external monitors, iMacs, and wide desktop displays */
+@media (min-width: 1800px) {
+    .project-preview {
+        width: 50vw;
+        max-width: 1000px;
+    }
+}
+
+.project-preview.visible {
+    opacity: 1;
+}
+
+.project-preview img {
+    position: absolute;
+    width: 55%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.2s ease-out;
+}
+
+/* Back Image */
+.project-preview img:first-child {
+    top: 0;
+    left: 0;
+    transform: translate(var(--x1, 0px), var(--y1, 0px));
+}
+
+/* Front Image */
+.project-preview img:last-child {
+    bottom: 0;
+    right: 0;
+    transform: translate(var(--x2, 0px), var(--y2, 0px));
+    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.2));
+}
+
+
+/* --------------------------------------------------
+   BOTTOM NAVIGATION
+-------------------------------------------------- */
+
+.site-nav {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 20;
+}
+
+.site-nav a {
+    width: max-content;
+}
+
+
+/* --------------------------------------------------
+   MASCOT
+-------------------------------------------------- */
+
+.mascot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 550px;
+    z-index: 30;
+    pointer-events: none;
+    transition: width 0.3s ease;
+}
+
+.project-page .mascot {
+    width: 220px;
+}
+
+.mascot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+/* --------------------------------------------------
+   PROJECT SUBPAGES (3-COLUMN GRID LAYOUT)
+-------------------------------------------------- */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 370px 1fr 200px; 
+    gap: 8vw; /* Takes up 8% of the screen width for each gap */
+    width: 100%;
+    padding-bottom: 120px;
+}
+
+.project-content {
+    width: 100%;
+}
+
+.project-header,
+.project-images {
+    width: 100%;
+}
+
+/* --------------------------------------------------
+   PROJECT PAGE HEADER & LAYOUT
+-------------------------------------------------- */
+
+.project-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Custom Font Title (Komrile) */
+.project-title-bold {
+    font-family: 'Tagesschrift', sans-serif;
+    font-size: 38px;
+    font-weight: thin;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+/* Subtitle in default font */
+.project-subtitle {
+    font-family: 'AppleGaramond', Georgia, serif;
+    font-size: 18px;
+    color: #444444;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+
+/* Hero (First) Image directly under header */
+.project-hero-image {
+    margin: 0 0 35px 0;
+    width: 100%;
+}
+
+.project-hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Minimalist Metadata Grid */
+.project-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 24px;
+    padding: 18px 0;
+    margin-bottom: 40px;
+    border-top: 1px dotted #cccccc;
+    border-bottom: 1px dotted #cccccc;
+    font-size: 14px;
+    text-align: left;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.meta-label {
+    font-family: sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666666;
+}
+
+.meta-value {
+    font-family: 'AppleGaramond', Georgia, serif;
+    font-size: 16px;
+}
+
+/* Standard Body Text */
+.project-description {
+    margin-bottom: 60px;
+    font-size: 18px;
+    line-height: 1.45;
+    max-width: 750px;
+}
+
+.project-description p {
+    margin: 0 0 18px 0;
+}
+
+/* Images Gallery Spacing */
+.project-images figure {
+    margin: 0 0 60px 0;
+}
+
+.project-images img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* --------------------------------------------------
+   PROJECT SIDEBAR (RIGHT / 3RD COLUMN)
+-------------------------------------------------- */
+
+.projects-sidebar {
+    width: 200px;
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+.sidebar-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.sidebar-project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.sidebar-item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+}
+
+.sidebar-item:hover {
+    background-color: transparent;
+}
+
+/* Image wrapper container */
+.sidebar-item-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 120px; /* <--- Fixed height is capping the preview images */
+    margin-bottom: 6px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.sidebar-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+/* Base Inverted Inverted/X-Ray Effect on Hover */
+.sidebar-item:hover img {
+    filter: invert(100%) brightness(1.1) contrast(1.1);
+    transform: scale(1.02);
+}
+
+/* Pale Pink Hue Layer on Top */
+.sidebar-item-img-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(234, 178, 221); /* Your exact pale pink tone */
+    mix-blend-mode: hue; /* Replaces color hues with pink while preserving inverted detail */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+/* Trigger pink hue layer on hover */
+.sidebar-item:hover .sidebar-item-img-wrapper::after {
+    opacity: 1;
+}
+
+.sidebar-item-title {
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.sidebar-item:hover .sidebar-item-title {
+    background-color: rgba(234, 178, 221, 0.458);
+}
+
+/* --------------------------------------------------
+   METADATA GRID & ARTIST LIST
+-------------------------------------------------- */
+
+.project-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 24px;
+    padding: 18px 0;
+    margin-bottom: 40px;
+    border-top: 1px dotted #cccccc;
+    border-bottom: 1px dotted #cccccc;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Full-width metadata item (spans across both columns) */
+.meta-item.full-width {
+    grid-column: 1 / -1;
+    padding-top: 10px;
+    border-top: 1px dotted #e5e5e5;
+}
+
+/* Image Captions / Credits */
+figcaption.image-credit {
+    font-family: sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: #666666;
+    margin-top: 8px;
+    text-align: center;
+    line-height: 1.35;
+}
+
+
+
+
+/* --------------------------------------------------
+   MOBILE ADAPTATION
+-------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: 370px 1fr;
+    }
+
+    .projects-sidebar {
+        grid-column: span 2;
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+
+    .sidebar-project-list {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .sidebar-item {
+        flex: 1;
+    }
+}
+
+@media (max-width: 850px) {
+    .site {
+        padding: 15px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .intro {
+        width: 100%;
+    }
+
+    .logo {
+        width: 140px;
+        margin-bottom: 25px;
+    }
+
+    .projects,
+    .project-content {
+        width: 100%;
+    }
+
+    .project-preview {
+        display: none;
+    }
+
+    .site-nav {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+
+    .mascot {
+        width: 100px;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .sidebar-project-list {
+        flex-direction: column;
+    }
+
+    .project-title-bold {
+        font-size: 36px;
+    }
+
+    .project-meta-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --------------------------------------------------
+   LOGO HAND-DRAWN BOIL ANIMATION ON ANY LINK HOVER
+-------------------------------------------------- */
+
+@keyframes squigglevision {
+  0%, 100% {
+    filter: url('#hand-drawn');
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    filter: url('#hand-drawn-2');
+    transform: scale(1.005) rotate(0.3deg);
+  }
+  66% {
+    filter: none;
+    transform: scale(0.998) rotate(-0.3deg);
+  }
+}
+
+/* Base logo styling */
+.logo {
+  display: block;
+  width: 370px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 35px;
+}
+
+/* Trigger the boil animation on hover over the logo OR hover over ANY link on the site */
+.logo:hover,
+body:has(a:hover) .logo {
+  animation: squigglevision 0.35s steps(1) infinite;
+}

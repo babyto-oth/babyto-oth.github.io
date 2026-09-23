@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babytooth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="site">
+
+    <!-- LEFT / MAIN INFORMATION -->
+    <section class="intro">
+        <a href="index.html" class="logo-link">
+            <img
+                src="assets/babytooth.png"
+                alt="Babytooth"
+                class="logo"
+            >
+        </a>
+
+        <div class="description">
+            <p>
+                Babytooth is an independent curatorial and artistic
+                platform founded by Sarah Khadra Hasni, working across
+                exhibitions, games, online environments, and participatory
+                formats to explore how collective belief shapes objects,
+                narratives, and communities.
+            </p>
+            <p>
+                Our flagship project, The Chatroom & The Dollhouse
+                (The Wrong Biennale, 2025–26), brought together 29 artists
+                across an online exhibition, a self-designed tabletop game
+                and a physical group show — treating each format as a
+                different entry point into the same shared world.
+            </p>
+            <p>
+                Babytooth's ongoing work sits deliberately between
+                disciplines: not quite gallery, not quite game studio,
+                not quite publisher, built instead around the conviction
+                that participation and folklore are two names for the
+                same instinct.
+            </p>
+        </div>
+    </section>
+
+    <!-- RIGHT / PROJECTS -->
+    <section class="projects">
+        <div class="projects-label">
+            FLAGSHIP PROJECT: "THE CHATROOM & THE DOLLHOUSE"
+        </div>
+
+        <nav class="project-list">
+
+            <!-- THE DOLLHOUSE -->
+            <a
+                href="projects/dollhouse.html"
+                class="project"
+                data-img1="assets/dollhouse-1.png"
+                data-img2="assets/dollhouse-2.png"
+            >
+                <span class="project-title">
+                    The {Dollhouse}
+                </span>
+                <span class="project-date">
+                    2025–26
+                </span>
+            </a>
+
+            <!-- THE CHATROOM -->
+            <a
+                href="projects/chatroom.html"
+                class="project"
+                data-img1="assets/chatroom-1.jpg"
+                data-img2="assets/chatroom-2.jpg"
+            >
+                <span class="project-title">
+                    The {Chatroom}
+                </span>
+                <span class="project-date">
+                    2026
+                </span>
+            </a>
+
+            <!-- EXIT THE DOLLHOUSE -->
+            <a
+                href="projects/exit-dollhouse.html"
+                class="project"
+                data-img1="assets/exit-dollhouse-1.jpg"
+                data-img2="assets/exit-dollhouse-2.jpg"
+            >
+                <span class="project-title">
+                    Exit the {Dollhouse}
+                </span>
+                <span class="project-date">
+                    2026
+                </span>
+            </a>
+
+        </nav>
+    </section>
+
+    <!-- PROJECT HOVER IMAGES -->
+    <div class="project-preview">
+        <img
+            src=""
+            alt=""
+            id="preview-image-1"
+        >
+        <img
+            src=""
+            alt=""
+            id="preview-image-2"
+        >
+    </div>
+
+    <!-- BOTTOM LEFT NAVIGATION -->
+    <nav class="site-nav">
+        <a href="index.html">
+            ⁂ HOME
+        </a>
+        <a
+            href="https://www.instagram.com/bby.t00th/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+           ↪ INSTAGRAM
+        </a>
+        <a href="#newsletter">
+           ☁ NEWSLETTER
+        </a>
+        <a href="mailto:thechatroomandthedollhouse@gmail.com">
+           ☼ CONTACT
+        </a>
+    </nav>
+
+<div class="mascot">
+    <img
+        src="assets/spikey0-static.png"
+        data-static="assets/spikey0-static.png"
+        data-gif="assets/spikey0.gif"
+        data-spin2="assets/spikey1.gif"
+        alt="Babytooth mascot"
+    >
+</div>
+
+</main>
+
+<div class="bottom-fade"></div>
+
+<script src="script.js"></script>
+</body>
+<!-- HIDDEN SVG FILTER FOR LOGO BOILING EFFECT -->
+<svg style="display: none;">
+  <defs>
+    <filter id="hand-drawn">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    
+    <filter id="hand-drawn-2">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" opacity="0.8" />
+    </filter>
+  </defs>
+</svg>
+</html>

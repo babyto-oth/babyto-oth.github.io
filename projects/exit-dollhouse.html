@@ -152,16 +152,20 @@
 
 <div class="bottom-fade"></div>
 
-<!-- HIDDEN SVG FILTER FOR LOGO ANIMATION -->
+<!-- HIDDEN SVG FILTER (BALANCED INTENSITY) -->
 <svg width="0" height="0" style="position: absolute; pointer-events: none;">
     <defs>
-        <filter id="hand-drawn">
-            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+        <filter id="hand-drawn" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.038" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G" />
         </filter>
-        <filter id="hand-drawn-2">
-            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+        <filter id="hand-drawn-2" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.048" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <filter id="hand-drawn-3" x="-5%" y="-5%" width="110%" height="110%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.032" numOctaves="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.8" xChannelSelector="R" yChannelSelector="G" />
         </filter>
     </defs>
 </svg>

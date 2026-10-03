@@ -4,20 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 /* --------------------------------------------------
-   PROJECT TITLE (ROCK SALT + CONTINUOUS BOIL)
--------------------------------------------------- */
-.project-title-bold {
-    font-weight: normal;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-    margin: 0 0 10px 0;
-    text-transform: uppercase;
-    display: inline-block;
-    
-    /* Continuous 3-step hand-drawn boil animation */
-    animation: squigglevision 0.35s steps(1) infinite;
-}
-/* --------------------------------------------------
    CUSTOM FONT SETUP
 -------------------------------------------------- */
 
@@ -55,7 +41,7 @@ body {
 
 body {
     font-family: 'AppleGaramond', Arial, sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.35;
     background: #ffffff;
     color: #000000;
@@ -123,7 +109,7 @@ a:hover, a:active {
 -------------------------------------------------- */
 
 .intro {
-    width: 370px;
+    width: 310px;
     max-width: 100%;
 }
 
@@ -132,9 +118,8 @@ a:hover, a:active {
     position: sticky;
     top: 0;
     z-index: 100;
-    padding-top: 20px; /* Maintains top spacing when sticky */
+    padding-top: 20px;
     margin-bottom: 25px;
-    /* White gradient fading down to transparent so text disappears behind it as you scroll */
     background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 1) 0%,
@@ -145,10 +130,10 @@ a:hover, a:active {
 
 .logo {
     display: block;
-    width: 370px;
+    width: 310px;
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px; /* Reduced since bottom padding of logo-link adds spacing */
+    margin-bottom: 10px;
 }
 
 
@@ -200,7 +185,6 @@ a:hover, a:active {
    PROJECT IMAGE PREVIEW
 -------------------------------------------------- */
 
-/* Base styling: Locked at 40vw / 650px max for all laptops (including 13" MacBooks) */
 .project-preview {
     position: fixed;
     left: 50%;
@@ -215,7 +199,6 @@ a:hover, a:active {
     transition: opacity 0.15s ease;
 }
 
-/* ONLY applies to large external monitors, iMacs, and wide desktop displays */
 @media (min-width: 1800px) {
     .project-preview {
         width: 50vw;
@@ -235,14 +218,12 @@ a:hover, a:active {
     transition: transform 0.2s ease-out;
 }
 
-/* Back Image */
 .project-preview img:first-child {
     top: 0;
     left: 0;
     transform: translate(var(--x1, 0px), var(--y1, 0px));
 }
 
-/* Front Image */
 .project-preview img:last-child {
     bottom: 0;
     right: 0;
@@ -278,14 +259,14 @@ a:hover, a:active {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    width: 550px;
+    width: 480px; /* Reduced from 550px for homepage/index */
     z-index: 30;
     pointer-events: none;
     transition: width 0.3s ease;
 }
 
 .project-page .mascot {
-    width: 220px;
+    width: 160px;
 }
 
 .mascot img {
@@ -296,16 +277,19 @@ a:hover, a:active {
     cursor: pointer;
 }
 
+
 /* --------------------------------------------------
    PROJECT SUBPAGES (3-COLUMN GRID LAYOUT)
 -------------------------------------------------- */
 
 .project-grid {
     display: grid;
-    grid-template-columns: 370px 1fr 200px; 
-    gap: 8vw; /* Takes up 8% of the screen width for each gap */
+    grid-template-columns: 310px 1fr 170px; 
+    gap: 110px; /* Increased from 100px to 110px (pushes center in by 20px total) */
     width: 100%;
     padding-bottom: 120px;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .project-content {
@@ -317,6 +301,7 @@ a:hover, a:active {
     width: 100%;
 }
 
+
 /* --------------------------------------------------
    PROJECT PAGE HEADER & LAYOUT
 -------------------------------------------------- */
@@ -324,32 +309,33 @@ a:hover, a:active {
 .project-header {
     width: 100%;
     text-align: center;
-    margin-bottom: 40px;
-}
-
-/* Custom Font Title (Komrile) */
-.project-title-bold {
-    font-family: 'Tagesschrift', sans-serif;
-    font-size: 38px;
-    font-weight: thin;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    margin: 0 0 10px 0;
-    text-transform: uppercase;
-}
-
-/* Subtitle in default font */
-.project-subtitle {
-    font-family: 'AppleGaramond', Georgia, serif;
-    font-size: 18px;
-    color: #444444;
-    letter-spacing: 0.5px;
     margin-bottom: 30px;
 }
 
-/* Hero (First) Image directly under header */
+.project-title-bold {
+    font-family: 'Tagesschrift', sans-serif;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    display: inline-block;
+    
+    /* Continuous 3-step hand-drawn boil animation */
+    animation: squigglevision 0.35s steps(1) infinite;
+}
+
+.project-subtitle {
+    font-family: 'AppleGaramond', Georgia, serif;
+    font-size: 15px;
+    color: #444444;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+}
+
 .project-hero-image {
-    margin: 0 0 35px 0;
+    margin: 0 0 30px 0;
     width: 100%;
 }
 
@@ -359,16 +345,15 @@ a:hover, a:active {
     height: auto;
 }
 
-/* Minimalist Metadata Grid */
 .project-meta-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px 24px;
-    padding: 18px 0;
-    margin-bottom: 40px;
+    padding: 16px 0;
+    margin-bottom: 35px;
     border-top: 1px dotted #cccccc;
     border-bottom: 1px dotted #cccccc;
-    font-size: 14px;
+    font-size: 13px;
     text-align: left;
 }
 
@@ -388,24 +373,22 @@ a:hover, a:active {
 
 .meta-value {
     font-family: 'AppleGaramond', Georgia, serif;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-/* Standard Body Text */
 .project-description {
-    margin-bottom: 60px;
-    font-size: 18px;
-    line-height: 1.45;
-    max-width: 750px;
+    margin-bottom: 50px;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 100%; 
 }
 
 .project-description p {
-    margin: 0 0 18px 0;
+    margin: 0 0 14px 0;
 }
 
-/* Images Gallery Spacing */
 .project-images figure {
-    margin: 0 0 60px 0;
+    margin: 0 0 50px 0;
 }
 
 .project-images img {
@@ -414,12 +397,13 @@ a:hover, a:active {
     height: auto;
 }
 
+
 /* --------------------------------------------------
    PROJECT SIDEBAR (RIGHT / 3RD COLUMN)
 -------------------------------------------------- */
 
 .projects-sidebar {
-    width: 200px;
+    width: 100%;
     position: sticky;
     top: 20px;
     align-self: start;
@@ -428,13 +412,13 @@ a:hover, a:active {
 .sidebar-title {
     font-size: 11px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .sidebar-project-list {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 18px;
 }
 
 .sidebar-item {
@@ -448,12 +432,11 @@ a:hover, a:active {
     background-color: transparent;
 }
 
-/* Image wrapper container */
 .sidebar-item-img-wrapper {
     position: relative;
     width: 100%;
-    height: 120px; /* <--- Fixed height is capping the preview images */
-    margin-bottom: 6px;
+    aspect-ratio: 17 / 10;
+    margin-bottom: 4px;
     overflow: hidden;
     background-color: #ffffff;
 }
@@ -466,13 +449,11 @@ a:hover, a:active {
     transition: filter 0.25s ease, transform 0.25s ease;
 }
 
-/* Base Inverted Inverted/X-Ray Effect on Hover */
 .sidebar-item:hover img {
     filter: invert(100%) brightness(1.1) contrast(1.1);
     transform: scale(1.02);
 }
 
-/* Pale Pink Hue Layer on Top */
 .sidebar-item-img-wrapper::after {
     content: '';
     position: absolute;
@@ -480,20 +461,20 @@ a:hover, a:active {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(234, 178, 221); /* Your exact pale pink tone */
-    mix-blend-mode: hue; /* Replaces color hues with pink while preserving inverted detail */
+    background-color: rgb(234, 178, 221);
+    mix-blend-mode: hue;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease;
 }
 
-/* Trigger pink hue layer on hover */
 .sidebar-item:hover .sidebar-item-img-wrapper::after {
     opacity: 1;
 }
 
 .sidebar-item-title {
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 1.2;
     text-decoration: underline;
 }
 
@@ -501,30 +482,17 @@ a:hover, a:active {
     background-color: rgba(234, 178, 221, 0.458);
 }
 
+
 /* --------------------------------------------------
    METADATA GRID & ARTIST LIST
 -------------------------------------------------- */
 
-.project-meta-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px 24px;
-    padding: 18px 0;
-    margin-bottom: 40px;
-    border-top: 1px dotted #cccccc;
-    border-bottom: 1px dotted #cccccc;
-    font-size: 14px;
-    text-align: left;
-}
-
-/* Full-width metadata item (spans across both columns) */
 .meta-item.full-width {
     grid-column: 1 / -1;
     padding-top: 10px;
     border-top: 1px dotted #e5e5e5;
 }
 
-/* Image Captions / Credits */
 figcaption.image-credit {
     font-family: sans-serif;
     font-size: 11px;
@@ -536,15 +504,13 @@ figcaption.image-credit {
 }
 
 
-
-
 /* --------------------------------------------------
    MOBILE ADAPTATION
 -------------------------------------------------- */
 
 @media (max-width: 1024px) {
     .project-grid {
-        grid-template-columns: 370px 1fr;
+        grid-template-columns: 310px 1fr;
     }
 
     .projects-sidebar {
@@ -575,7 +541,8 @@ figcaption.image-credit {
     }
 
     .intro {
-        width: 100%;
+        width: 310px;
+        max-width: 100%;
     }
 
     .logo {
@@ -611,7 +578,7 @@ figcaption.image-credit {
     }
 
     .project-title-bold {
-        font-size: 36px;
+        font-size: 26px;
     }
 
     .project-meta-grid {
@@ -619,9 +586,20 @@ figcaption.image-credit {
     }
 }
 
+
 /* --------------------------------------------------
-   LOGO HAND-DRAWN BOIL ANIMATION ON ANY LINK HOVER
+   HAND-DRAWN BOIL & JITTER ANIMATION (BALANCED)
 -------------------------------------------------- */
+
+.logo {
+    display: block;
+    width: 310px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    /* Prevent jitter from pushing layout content below it */
+    transform-origin: center center;
+}
 
 @keyframes squigglevision {
   0%, 100% {
@@ -630,25 +608,22 @@ figcaption.image-credit {
   }
   33% {
     filter: url('#hand-drawn-2');
-    transform: scale(1.005) rotate(0.3deg);
+    transform: scale(1.004) rotate(-0.15deg);
   }
   66% {
-    filter: none;
-    transform: scale(0.998) rotate(-0.3deg);
+    filter: url('#hand-drawn-3');
+    transform: scale(0.996) rotate(0.15deg);
   }
 }
 
-/* Base logo styling */
-.logo {
-  display: block;
-  width: 370px;
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 35px;
-}
-
-/* Trigger the boil animation on hover over the logo OR hover over ANY link on the site */
+/* Apply subtle boil animation to logo on hover or link hover */
 .logo:hover,
 body:has(a:hover) .logo {
-  animation: squigglevision 0.35s steps(1) infinite;
+  animation: squigglevision 0.38s steps(1) infinite;
+}
+
+/* Apply subtle boil animation to project page bold titles */
+.project-title-bold {
+  display: inline-block;
+  animation: squigglevision 0.38s steps(1) infinite;
 }

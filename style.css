@@ -484,7 +484,7 @@ a:hover, a:active {
 
 
 /* --------------------------------------------------
-   INTERACTIVE NUMBERED GALLERY (STABLE & CENTERED)
+   INTERACTIVE NUMBERED GALLERY (STABLE CAPTION & NAV)
 -------------------------------------------------- */
 
 .project-gallery {
@@ -494,58 +494,60 @@ a:hover, a:active {
 }
 
 .gallery-frame {
-    margin: 0 0 15px 0;
+    margin: 0;
     width: 100%;
-    /* Locks frame size so different aspect ratios don't jump layout */
-    background-color: #fcfcfc; 
+    background-color: #fcfcfc;
 }
 
-.gallery-frame img {
+.gallery-frame img,
+.gallery-frame video {
     display: block;
     width: 100%;
-    /* Set fixed aspect ratio for all gallery display frames */
     aspect-ratio: 3 / 2;
-    object-fit: contain; /* Keeps whole image visible without distortion or resizing parent */
+    object-fit: contain;
 }
 
+/* FIGCAPTION: SMALLER FONT + FIXED HEIGHT FOR LONG CAPTIONS */
 .gallery-frame figcaption {
     font-family: sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.5px;
+    font-size: 10px; /* Crisp smaller font */
+    line-height: 1.45;
+    letter-spacing: 0.4px;
     color: #666666;
     margin-top: 10px;
     text-align: left;
-    min-height: 2.8em; /* Holds vertical space for multi-line captions */
+    /* Reserves enough vertical room (~4 lines) so numbers never move on switch */
+    min-height: 5.8em; 
 }
 
-/* Navigation Layout: Label Absolute Left, Numbers True Centered */
+/* NAVIGATION BAR: FIXED AT THE BOTTOM BELOW CAPTION */
 .gallery-nav {
     display: flex;
-    justify-content: center; /* Centers child element (.gallery-numbers-group) directly in column */
-    align-items: center;
+    justify-content: center;
+    align-items: flex-end;
     border-top: 1px dotted #e5e5e5;
-    padding-top: 12px;
-    position: relative; /* Anchor for absolute position label */
+    padding-top: 10px;
+    margin-top: 12px;
+    position: relative;
     width: 100%;
 }
 
 .gallery-label {
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%); /* Keeps label vertically aligned with the numbers */
+    bottom: 2px; /* Pins label cleanly to the same baseline as numbers */
     font-family: sans-serif;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #888888;
     pointer-events: none;
+    line-height: 1;
 }
 
-/* Centered Button Group (Mathematically aligned to middle column) */
 .gallery-numbers-group {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     gap: 8px;
     margin: 0 auto;
@@ -556,9 +558,10 @@ a:hover, a:active {
     border: none;
     font-family: 'AppleGaramond', Georgia, serif;
     font-size: 14px;
+    line-height: 1;
     color: #000000;
     cursor: pointer;
-    padding: 2px 6px;
+    padding: 2px 5px;
     text-decoration: underline;
     transition: background-color 0.15s ease;
 }

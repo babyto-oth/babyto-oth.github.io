@@ -158,9 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const newCaption = button.getAttribute('data-caption');
 
             if (newSrc) displayImg.src = newSrc;
-            if (displayCaption && newCaption !== null) {
-                displayCaption.textContent = newCaption;
-            }
+if (displayCaption && newCaption !== null) {
+    displayCaption.innerHTML = newCaption;
+}
 
             // Highlight active button
             galleryButtons.forEach(btn => btn.classList.remove('active'));

@@ -139,3 +139,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     });
 });
+
+/* --------------------------------------------------
+   INTERACTIVE NUMBERED HOVER GALLERY
+-------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const galleryButtons = document.querySelectorAll('.gallery-num');
+    if (!galleryButtons.length) return;
+
+    galleryButtons.forEach(button => {
+        const switchImage = () => {
+            const displayImg = document.getElementById('gallery-display');
+            const displayCaption = document.getElementById('gallery-caption');
+
+            if (!displayImg) return;
+
+            const newSrc = button.getAttribute('data-src');
+            const newCaption = button.getAttribute('data-caption');
+
+            if (newSrc) displayImg.src = newSrc;
+            if (displayCaption && newCaption !== null) {
+                displayCaption.textContent = newCaption;
+            }
+
+            // Highlight active button
+            galleryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        };
+
+        // Triggers on hover for desktop & tap for mobile
+        button.addEventListener('mouseenter', switchImage);
+        button.addEventListener('click', switchImage);
+    });
+});

@@ -109,18 +109,29 @@
                 </p>
             </div>
 
-            <!-- REMAINING PROJECT IMAGES GALLERY -->
-            <section class="project-images">
-                <figure>
-                    <img src="../assets/dollhouse-2.png" alt="The Dollhouse screenshot 2">
+<!-- INTERACTIVE GALLERY (IMAGES 2-8) -->
+            <div class="project-gallery">
+                <figure class="gallery-frame">
+                    <img id="gallery-display" src="../assets/dollhouse-2.png" alt="The Dollhouse image 2">
+                    <figcaption id="gallery-caption" class="image-credit">
+                        View of The {Dollhouse}, 2025–26.
+                    </figcaption>
                 </figure>
-                <figure>
-                    <img src="../assets/dollhouse-3.jpg" alt="The Dollhouse screenshot 3">
-                </figure>
-                <figure>
-                    <img src="../assets/dollhouse-4.jpg" alt="The Dollhouse screenshot 4">
-                </figure>
-            </section>
+
+                <!-- NUMBERED HOVER CONTROLS -->
+<div class="gallery-nav">
+                    <span class="gallery-label">Select Image:</span>
+                    <div class="gallery-numbers-group">
+                        <button class="gallery-num active" data-src="../assets/dollhouse-2.png" data-caption="View of The {Dollhouse}, 2025–26.">1</button>
+                        <button class="gallery-num" data-src="../assets/dollhouse-3.png" data-caption="View of The {Dollhouse}, 2025–26.">2</button>
+
+                        <button class="gallery-num" data-src="../assets/dollhouse-4.png" data-caption="View of The {Dollhouse}, 2025–26.">3</button>
+                        <button class="gallery-num" data-src="../assets/dollhouse-5.png" data-caption="View of The {Dollhouse}, 2025–26.">4</button>
+                        <button class="gallery-num" data-src="../assets/dollhouse-6.png" data-caption="View of The {Dollhouse}, 2025–26.">5</button>
+                        <button class="gallery-num" data-src="../assets/dollhouse-7.png" data-caption="View of The {Dollhouse}, 2025–26.">6</button>
+                        <button class="gallery-num" data-src="../assets/dollhouse-8.png" data-caption="View of The {Dollhouse}, 2025–26.">7</button>
+                    </div>
+                </div>
 
         </section>
 

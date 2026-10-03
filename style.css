@@ -484,6 +484,92 @@ a:hover, a:active {
 
 
 /* --------------------------------------------------
+   INTERACTIVE NUMBERED GALLERY (STABLE & CENTERED)
+-------------------------------------------------- */
+
+.project-gallery {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.gallery-frame {
+    margin: 0 0 15px 0;
+    width: 100%;
+    /* Locks frame size so different aspect ratios don't jump layout */
+    background-color: #fcfcfc; 
+}
+
+.gallery-frame img {
+    display: block;
+    width: 100%;
+    /* Set fixed aspect ratio for all gallery display frames */
+    aspect-ratio: 3 / 2;
+    object-fit: contain; /* Keeps whole image visible without distortion or resizing parent */
+}
+
+.gallery-frame figcaption {
+    font-family: sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: #666666;
+    margin-top: 10px;
+    text-align: left;
+    min-height: 2.8em; /* Holds vertical space for multi-line captions */
+}
+
+/* Navigation Layout: Label Absolute Left, Numbers True Centered */
+.gallery-nav {
+    display: flex;
+    justify-content: center; /* Centers child element (.gallery-numbers-group) directly in column */
+    align-items: center;
+    border-top: 1px dotted #e5e5e5;
+    padding-top: 12px;
+    position: relative; /* Anchor for absolute position label */
+    width: 100%;
+}
+
+.gallery-label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Keeps label vertically aligned with the numbers */
+    font-family: sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888888;
+    pointer-events: none;
+}
+
+/* Centered Button Group (Mathematically aligned to middle column) */
+.gallery-numbers-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.gallery-num {
+    background: none;
+    border: none;
+    font-family: 'AppleGaramond', Georgia, serif;
+    font-size: 14px;
+    color: #000000;
+    cursor: pointer;
+    padding: 2px 6px;
+    text-decoration: underline;
+    transition: background-color 0.15s ease;
+}
+
+.gallery-num:hover,
+.gallery-num.active {
+    background-color: rgba(234, 178, 221, 0.458);
+    text-decoration: none;
+}
+
+/* --------------------------------------------------
    METADATA GRID & ARTIST LIST
 -------------------------------------------------- */
 

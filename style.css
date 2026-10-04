@@ -680,6 +680,93 @@ figcaption.image-credit {
     text-decoration: none;
 }
 
+/* --- Inline Press Release Link --- */
+.press-release-inline {
+    display: inline-block;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+/* --- Combined Documentation Block --- */
+.project-documentation {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.doc-standalone-frame {
+    margin: 10px 0 0 0;
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #eeeeee;
+    padding: 12px;
+}
+
+.doc-standalone-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* --- DOCUMENTATION SECTION ADJUSTMENTS --- */
+
+/* 1. Hide the DOCUMENTATION meta label completely */
+.project-documentation .meta-label {
+    display: none;
+}
+
+/* 2. Remove gray frame padding, background, and border so image spans full width */
+.project-documentation .doc-standalone-frame {
+    margin: 30px 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    width: 100%;
+}
+
+.project-documentation .doc-standalone-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 3. Style the caption link to match the Press Release link styling */
+.project-documentation .image-credit,
+.project-documentation .image-credit a {
+    margin-top: 10px;
+    font-weight: bold;
+    color: inherit;
+    text-decoration: underline;
+    font-size: 0.95rem;
+    transition: opacity 0.15s ease;
+}
+
+.project-documentation .image-credit a:hover {
+    opacity: 0.6;
+}
+
+/* --- Floating Flyer Hover Overlay --- */
+.flyer-hover-preview {
+    position: fixed;
+    width: 280px; /* slightly smaller width prevents viewport overflow */
+    max-width: 80vw;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 999;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transform: translate(-50%, 15px); /* shifts image down below the cursor */
+}
+
+.flyer-hover-preview.visible {
+    opacity: 1;
+}
+
+.flyer-hover-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 
 /* ==========================================================================
    5. MEDIA QUERIES (MOBILE & RESPONSIVE)

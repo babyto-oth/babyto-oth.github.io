@@ -172,3 +172,84 @@ if (displayCaption && newCaption !== null) {
         button.addEventListener('click', switchImage);
     });
 });
+
+/* --------------------------------------------------
+   CONTACT MODAL TOGGLE & IN-PAGE AJAX SUBMISSION
+-------------------------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('contact-trigger');
+    const modal = document.getElementById('contact-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const submitBtn = document.getElementById('contact-submit-btn');
+
+    if (!modal) return;
+
+    const openModal = (e) => {
+        if (e) e.preventDefault();
+        modal.classList.add('active');
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+    };
+
+    if (trigger) trigger.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    // Close on overlay background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // In-page Form Submission via Fetch API (Prevents Redirect)
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const data = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    form.style.display = 'none';
+                    status.style.display = 'block';
+                    status.innerHTML = 'Thank you! Your message has been sent.';
+                    
+                    // Auto-close modal after 2.5 seconds and reset form
+                    setTimeout(() => {
+                        closeModal();
+                        form.reset();
+                        form.style.display = 'block';
+                        status.style.display = 'none';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send';
+                    }, 2500);
+                } else {
+                    const result = await response.json();
+                    status.style.display = 'block';
+                    status.style.color = '#d9534f';
+                    status.textContent = result.errors ? result.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form.";
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send';
+                }
+            } catch (error) {
+                status.style.display = 'block';
+                status.style.color = '#d9534f';
+                status.textContent = "Oops! There was a problem submitting your form.";
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send';
+            }
+        });
+    }
+});

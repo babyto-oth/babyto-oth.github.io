@@ -29,7 +29,7 @@
                 narratives, and communities.
             </p>
             <p>
-                Our flagship project, The Chatroom & The Dollhouse
+                Our flagship project, The Chatroom &amp; The Dollhouse
                 (The Wrong Biennale, 2025–26), brought together 29 artists
                 across an online exhibition, a self-designed tabletop game
                 and a physical group show — treating each format as a
@@ -48,7 +48,7 @@
     <!-- RIGHT / PROJECTS -->
     <section class="projects">
         <div class="projects-label">
-            FLAGSHIP PROJECT: "THE CHATROOM & THE DOLLHOUSE"
+            FLAGSHIP PROJECT: "THE CHATROOM &amp; THE DOLLHOUSE"
         </div>
 
         <nav class="project-list">
@@ -127,27 +127,61 @@
         >
            ↪ INSTAGRAM
         </a>
-        <a href="#newsletter">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSenMiPVBC29Pl1h9PBehbivuFpgXhqn_qUfXKItLPQYz8swDA/viewform" target="_blank">
            ☁ NEWSLETTER
         </a>
-        <a href="mailto:thechatroomandthedollhouse@gmail.com">
-           ☼ CONTACT
-        </a>
+        <!-- NAV TRIGGER -->
+        <a href="#contact" id="contact-trigger">CONTACT</a>
     </nav>
 
-<div class="mascot">
-    <img
-        src="assets/spikey0-static.png"
-        data-static="assets/spikey0-static.png"
-        data-gif="assets/spikey0.gif"
-        data-spin2="assets/spikey1.gif"
-        alt="Babytooth mascot"
-    >
-</div>
+    <div class="mascot">
+        <img
+            src="assets/spikey0-static.png"
+            data-static="assets/spikey0-static.png"
+            data-gif="assets/spikey0.gif"
+            data-spin2="assets/spikey1.gif"
+            alt="Babytooth mascot"
+        >
+    </div>
 
 </main>
 
+<!-- BOTTOM GRADIENT FADE (ONLY ACTIVE ON SCROLLABLE SUBPAGES) -->
 <div class="bottom-fade"></div>
+
+<!-- CONTACT OVERLAY MODAL (PLACED OUTSIDE MAIN FOR CLEAN STACKING) -->
+<div id="contact-modal" class="contact-modal">
+    <div class="contact-modal-content">
+        <button id="close-modal" class="close-modal" aria-label="Close modal">&times;</button>
+        <h2 class="modal-title">Get in Touch</h2>
+        
+        <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="_subject" required placeholder="Inquiry, proposition, etc.">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Your message..."></textarea>
+            </div>
+
+            <button type="submit" id="contact-submit-btn" class="contact-submit-btn">Send</button>
+        </form>
+
+        <div id="form-status" class="form-status" style="display: none;"></div>
+    </div>
+</div>
 
 <!-- HIDDEN SVG FILTER FOR LOGO ANIMATION -->
 <svg width="0" height="0" style="position: absolute; pointer-events: none;">

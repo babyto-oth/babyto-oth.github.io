@@ -162,13 +162,50 @@
 
     </div>
 
-    <!-- NAVIGATION -->
+<!-- NAVIGATION -->
     <nav class="site-nav">
         <a href="../index.html">HOME</a>
         <a href="https://www.instagram.com/bby.t00th/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
         <a href="../index.html#newsletter">NEWSLETTER</a>
-        <a href="mailto:thechatroomandthedollhouse@gmail.com">CONTACT</a>
+        <a href="#contact" id="contact-trigger">CONTACT</a>
     </nav>
+
+    <!-- BOTTOM GRADIENT FADE -->
+    <div class="bottom-fade"></div>
+
+    <!-- CONTACT OVERLAY MODAL -->
+    <div id="contact-modal" class="contact-modal">
+        <div class="contact-modal-content">
+            <button id="close-modal" class="close-modal" aria-label="Close modal">&times;</button>
+            <h2 class="modal-title">Get in Touch</h2>
+            
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="_subject" required placeholder="Inquiry, proposition, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Your message..."></textarea>
+                </div>
+
+                <button type="submit" id="contact-submit-btn" class="contact-submit-btn">Send</button>
+            </form>
+
+            <div id="form-status" class="form-status" style="display: none;"></div>
+        </div>
+    </div>
 
     <!-- MASCOT -->
     <div class="mascot">

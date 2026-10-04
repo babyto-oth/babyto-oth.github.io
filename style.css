@@ -73,6 +73,11 @@ a:active {
     max-width: 100%;
 }
 
+.description {
+
+    font-size: 14px;
+}
+
 .logo-link {
     display: block;
     position: sticky;
